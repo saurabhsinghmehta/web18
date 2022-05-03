@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Backend</title>
+    <style>
+      #container {
+        display: flex;
+        justify-content: space-around;
+        height: 70px;
+        width: 100%;
+        background-color: teal;
+      }
+      #container div {
+        margin-top: 10px;
+        font-size: 50px;
+      }
+      a {
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div><a href="backend.html">Backend</a></div>
+      <div><a href="frontend.html">Frontend</a></div>
+    </div>
+    <form>
+      <input type="text" placeholder="Your name" id="name" />
+      <input type="text" placeholder="img url" id="img" />
+      <input type="text" placeholder="company logo" id="logo" />
+      <input type="text" placeholder="role" id="role" />
+      <input type="submit" />
+    </form>
+  </body>
+</html>
+<script>
+  document.querySelector("form").addEventListener("submit", myfunction);
+  var arr = JSON.parse(localStorage.getItem("koibhi")) || [];
+
+  function myfunction() {
+    event.preventDefault();
+    var nam = document.querySelector("#name").value;
+    var imag = document.querySelector("#img").value;
+    var log = document.querySelector("#logo").value;
+    var rol = document.querySelector("#role").value;
+    var obj = { name: nam, img: imag, logo: log, role: rol };
+    arr.push(obj);
+    localStorage.setItem("koibhi", JSON.stringify(arr));
+  }
+</script>

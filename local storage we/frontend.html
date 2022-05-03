@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frontend</title>
+    <style>
+      #container {
+        display: flex;
+        justify-content: space-around;
+        height: 70px;
+        width: 100%;
+        background-color: teal;
+      }
+      #container div {
+        margin-top: 10px;
+        font-size: 50px;
+      }
+      a {
+        color: white;
+      }
+      #div1 {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: auto;
+        gap: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div><a href="backend.html">Backend</a></div>
+      <div><a href="frontend.html">Frontend</a></div>
+    </div>
+    <div id="div1"></div>
+  </body>
+</html>
+<script>
+  var get = JSON.parse(localStorage.getItem("koibhi"));
+  var div1 = document.querySelector("div1");
+  get.map(function (elem) {
+    var div = document.createElement("div");
+    var img = document.createElement("img");
+    img.src = elem.img;
+    var name = document.createElement("h2");
+    name.innerText = elem.name;
+    var logo = document.createElement("img");
+    logo.src = elem.logo;
+    var role = document.createElement("p");
+    role.innerText = elem.role;
+    div.append(name, img, logo, role);
+    div1.append(div);
+  });
+</script>
